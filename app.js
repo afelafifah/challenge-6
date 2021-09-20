@@ -9,6 +9,9 @@ var usersRouter = require('./routes/users');
 var usersGamerRouter = require('./routes/usersGamer');
 var usersBiodataRouter = require('./routes/usersBiodata');
 var usersHistoryRouter = require('./routes/usersHistory');
+var usersGamerLogin = require('./routes/usersLogin.js');
+var usersGamerList = require('./routes/usersList');
+
 
 var app = express();
 
@@ -27,6 +30,8 @@ app.use('/users', usersRouter);
 app.use('/users-gamer', usersGamerRouter);
 app.use('/users-biodata', usersBiodataRouter);
 app.use('/users-history', usersHistoryRouter);
+app.use('/users-login', usersGamerLogin);
+app.use('/users-list', usersGamerList);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
