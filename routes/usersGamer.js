@@ -5,6 +5,24 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const { route } = require('.');
 
+//untuk menampilkan data user
+router.get("/", async (req, res) => {
+  const user = await user_game.findAll();
+
+  if (user) {
+      res.status(200).json({
+          status: 200,
+          msg: "berhasil get all user game",
+          data: user,
+      });
+  } else {
+      res.status(400).json({
+          status: 400,
+          msg: "tidak ditemukan data",
+      });
+  }
+  res.json(user)
+});
 /* GET users listing. */
 router.post(
   '/',
@@ -49,7 +67,7 @@ router.post(
           generate_random: suggestRandom[0]
         })
           .then(result => {
-            return res.status(201).json({code: 201, message: 'berhasil menambkan data'})
+            return res.status(201).json({code: 201, message: 'berhasil menambahkan data'})
         })
     });
 
@@ -61,22 +79,7 @@ router.post(
   },
 );
 
-router.get("/", async (req, res) => {
-    const getUserGame = await user_game.findAll();
 
-    if (getUserGame) {
-        res.status(200).json({
-            status: 200,
-            msg: "berhasil get all user game",
-            data: getUserGame,
-        });
-    } else {
-        res.status(400).json({
-            status: 400,
-            msg: "tidak ditemukan data",
-        });
-    }
-});
 
 // router.delete("/:id", async (req, res) => {
 //     const deleteUser = await user_game.destroy({
