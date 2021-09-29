@@ -11,6 +11,7 @@ var usersBiodataRouter = require('./routes/usersBiodata');
 var usersHistoryRouter = require('./routes/usersHistory');
 var usersGamerLogin = require('./routes/usersLogin.js');
 var usersGamerList = require('./routes/usersList');
+var masterRoom = require('./routes/room');
 
 
 var app = express();
@@ -32,6 +33,7 @@ app.use('/users-biodata', usersBiodataRouter);
 app.use('/users-history', usersHistoryRouter);
 app.use('/users-login', usersGamerLogin);
 app.use('/users-list', usersGamerList);
+app.use('/room', masterRoom);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

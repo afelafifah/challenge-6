@@ -79,14 +79,22 @@ router.post(
   },
 );
 
+router.post("/register", async (req, res) => {
+  //menangkap username, email, password, dan isAdmin
+  bcrypt.hash(req.body.password, 10, function(err, hash) {
+    user_game.create({
+      username: req.body.username,
+      password: hash,
+      email: req.body.email,
+      isAdmin: req.body.isAdmin
+    })
+    // return res.status(200).json({ message : 'data bisa dimasukkan'})
+    .then(result => {
+      return res.status(201).json({code: 201, message: 'berhasil menambahkan data'})
+    })
+  })
+})
 
-
-// router.delete("/:id", async (req, res) => {
-//     const deleteUser = await user_game.destroy({
-//         where:
-//     })
-
-// });
 
 router.put("/:id", async (req, res) => {
 

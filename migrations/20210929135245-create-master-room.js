@@ -1,26 +1,23 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('user_games', {
+    await queryInterface.createTable('master_rooms', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
+      nama_room: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.STRING
+      id_player_1: {
+        type: Sequelize.INTEGER
       },
-      email: {
-        type: Sequelize.STRING
+      id_player_2: {
+        type: Sequelize.INTEGER
       },
-      isAdmin: {
-        type: Sequelize.BOOLEAN
-      },
-      generate_random: {
+      kode_unik: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -34,6 +31,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('user_games');
+    await queryInterface.dropTable('master_rooms');
   }
 };
